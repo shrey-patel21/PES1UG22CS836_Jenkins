@@ -4,31 +4,19 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                script {
-                    // Perform build steps here
-                    echo 'Building...'
-                    // Example: sh 'make'
-                }
+                sh 'g++ -o hello.cpp'
             }
         }
 
         stage('Test') {
             steps {
-                script {
-                    // Perform testing steps here
-                    echo 'Testing...'
-                    // Example: sh 'make test'
-                }
+                sh './hello'
             }
         }
 
         stage('Deploy') {
             steps {
-                script {
-                    // Perform deployment steps here
-                    echo 'Deploying...'
-                    // Example: sh 'make deploy'
-                }
+             echo 'deploy  
             }
         }
     }
