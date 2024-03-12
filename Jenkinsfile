@@ -2,28 +2,33 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/shrey-patel21/PES1UG22CS836_Jenkins.git' 
+            }
+        }
         stage('Build') {
             steps {
-                sh 'g++ main.cpp -o output '
+                build 'PES1UG22CS836-2'
+                sh 'g++ working.cpp -o output'
             }
         }
-
         stage('Test') {
             steps {
-                sh './hello'
+                sh './output'
             }
         }
-
         stage('Deploy') {
             steps {
-             echo 'deploy'  
+                echo 'deploy'
             }
         }
     }
 
     post {
         failure {
-            echo 'Pipeline failed'
+            echo 'Pipeline failed!'
         }
     }
 }
